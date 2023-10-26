@@ -29,7 +29,7 @@ class _MyAppState extends State<MyApp> {
       items: [
         CPListItem(
           text: "Item 1",
-          detailText: "Detail Text",
+          detailText: "^^Detail Text",
           onPress: (complete, self) {
             self.setDetailText("You can change the detail text.. 🚀");
             self.setAccessoryType(CPListItemAccessoryTypes.cloud);
