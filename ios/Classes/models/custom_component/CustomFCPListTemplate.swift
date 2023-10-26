@@ -9,7 +9,7 @@ import CarPlay
 
 @available(iOS 14.0, *)
 class CustomFCPListTemplate {
-  private(set) var _super: CustomCPListTemplate?
+  private(set) var _super: CPListTemplate?
   private(set) var elementId: String
   private var title: String?
   private var systemIcon: String
@@ -43,8 +43,8 @@ class CustomFCPListTemplate {
     }
   }
   
-  var get: CustomCPListTemplate {
-    let listTemplate = CustomCPListTemplate.init(title: title, sections: sections)
+  var get: CPListTemplate {
+    let listTemplate = CPListTemplate.init(title: title, sections: sections)
     listTemplate.emptyViewTitleVariants = emptyViewTitleVariants
     listTemplate.emptyViewSubtitleVariants = emptyViewSubtitleVariants
     listTemplate.showsTabBadge = showsTabBadge

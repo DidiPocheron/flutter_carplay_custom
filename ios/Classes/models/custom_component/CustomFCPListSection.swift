@@ -8,8 +8,8 @@
 import CarPlay
 
 @available(iOS 14.0, *)
-class FCPListSection {
-  private(set) var _super: CustomCPListSection?
+class CustomFCPListSection {
+  private(set) var _super: CPListSection?
   private(set) var elementId: String
   private var header: String?
   private var items: [CPListTemplateItem]
@@ -26,8 +26,8 @@ class FCPListSection {
     }
   }
   
-  var get: FCPListSection {
-    let listSection = FCPListSection.init(items: items, header: header, sectionIndexTitle: header)
+  var get: CustomFCPListSection {
+    let listSection = CustomFCPListSection.init(items: items, header: header, sectionIndexTitle: header)
     self._super = listSection
     return listSection
   }
