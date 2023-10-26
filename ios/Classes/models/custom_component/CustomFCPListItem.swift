@@ -8,8 +8,8 @@
 import CarPlay
 
 @available(iOS 14.0, *)
-class FCPListItem {
-  private(set) var _super: CustomCPListItem?
+class CustomFCPListItem {
+  private(set) var _super: CPListItem?
   private(set) var elementId: String
   private var text: String
   private var detailText: String?
@@ -33,8 +33,8 @@ class FCPListItem {
     self.setAccessoryType(fromString: obj["accessoryType"] as? String)
   }
   
-  var get: FCPListItem {
-    let listItem = FCPListItem.init(text: text, detailText: detailText)
+  var get: CustomFCPListItem {
+    let listItem = CustomFCPListItem.init(text: text, detailText: detailText)
     listItem.handler = ((CPSelectableListItem, @escaping () -> Void) -> Void)? { selectedItem, complete in
       if self.isOnPressListenerActive == true {
         DispatchQueue.main.async {
