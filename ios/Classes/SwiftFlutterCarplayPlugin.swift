@@ -230,11 +230,11 @@ public class SwiftFlutterCarplayPlugin: NSObject, FlutterPlugin {
                                      data: ["status": status])
   }
   
-  static func findItem(elementId: String, actionWhenFound: (_ item: CustomFCPListItem) -> Void) {
+  static func findItem(elementId: String, actionWhenFound: (_ item: FCPListTemplate) -> Void) {
     let objcRootTemplateType = String(describing: SwiftFlutterCarplayPlugin.objcRootTemplate).match(#"(.*flutter_carplay\.(.*)\))"#)[0][2]
-    var templates: [CustomFCPListTemplate] = []
-    if (objcRootTemplateType.elementsEqual(String(describing: CustomFCPListTemplate.self))) {
-      templates.append(SwiftFlutterCarplayPlugin.objcRootTemplate as! CustomFCPListTemplate)
+    var templates: [FCPListTemplate] = []
+    if (objcRootTemplateType.elementsEqual(String(describing: FCPListTemplate.self))) {
+      templates.append(SwiftFlutterCarplayPlugin.objcRootTemplate as! FCPListTemplate)
     } else if (objcRootTemplateType.elementsEqual(String(describing: FCPTabBarTemplate.self))) {
       templates = (SwiftFlutterCarplayPlugin.objcRootTemplate as! FCPTabBarTemplate).getTemplates()
     } else {
