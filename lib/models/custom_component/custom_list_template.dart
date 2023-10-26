@@ -1,4 +1,5 @@
 import 'package:flutter_carplay/models/button/bar_button.dart';
+import 'package:flutter_carplay/models/custom_component/custom_list_section.dart';
 import 'package:flutter_carplay/models/list/list_section.dart';
 import 'package:uuid/uuid.dart';
 
@@ -12,7 +13,7 @@ class CustomCPListTemplate {
   final String? title;
 
   /// An array of list sections as [CPListSection], each can contain zero or more list items.
-  final List<CPListSection> sections;
+  final List<CustomCPListSection> sections;
 
   /// An optional array of title variants for the template’s empty view.
   /// Provide the strings as localized displayable content and order from most- to
