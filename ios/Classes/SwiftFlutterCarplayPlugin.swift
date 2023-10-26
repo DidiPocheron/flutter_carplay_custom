@@ -72,7 +72,7 @@ public class SwiftFlutterCarplayPlugin: NSObject, FlutterPlugin {
         SwiftFlutterCarplayPlugin.rootTemplate = (rootTemplate as! FCPListTemplate).get
         break
          case String(describing: CustomFCPListTemplate.self):
-        rootTemplate = CustomFCPListTemplate(obj: args["rootTemplate"] as! [String : Any], templateType: CustomFCPListTemplate.DEFAULT)
+        rootTemplate = CustomFCPListTemplate(obj: args["rootTemplate"] as! [String : Any], templateType: FCPListTemplateTypes.DEFAULT)
         SwiftFlutterCarplayPlugin.rootTemplate = (rootTemplate as! CustomFCPListTemplate).get
         break
       default:
@@ -102,7 +102,7 @@ public class SwiftFlutterCarplayPlugin: NSObject, FlutterPlugin {
       let playingIndicatorLocation = args["playingIndicatorLocation"] as? String
       let accessoryType = args["accessoryType"] as? String
       SwiftFlutterCarplayPlugin.findItem(elementId: elementId, actionWhenFound: { item in
-        item.update(text: text, detailText: detailText, image: image, playbackProgress: playbackProgress, isPlaying: isPlaying, playingIndicatorLocation: playingIndicatorLocation, accessoryType: accessoryType)
+        item.update(text: text, detailText: detailText, image: image, playbackProgress: playbackProgress, isPlaying: isPlaying, accessoryType: accessoryType)
       })
       result(true)
       break
@@ -193,6 +193,9 @@ public class SwiftFlutterCarplayPlugin: NSObject, FlutterPlugin {
     
       case String(describing: FCPListTemplate.self):
         pushTemplate = FCPListTemplate(obj: args["template"] as! [String : Any], templateType: FCPListTemplateTypes.DEFAULT).get
+        break
+         case String(describing: CustomFCPListTemplate.self):
+        pushTemplate = CustomFCPListTemplate(obj: args["template"] as! [String : Any], templateType: FCPListTemplateTypes.DEFAULT).get
         break
       default:
         result(false)
