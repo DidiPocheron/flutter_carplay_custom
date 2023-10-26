@@ -18,7 +18,6 @@ class CustomFCPListItem {
   private var image: String?
   private var playbackProgress: CGFloat?
   private var isPlaying: Bool?
-  private var playingIndicatorLocation: CPListItemPlayingIndicatorLocation?
   private var accessoryType: CPListItemAccessoryType?
   
   init(obj: [String : Any]) {
@@ -29,8 +28,6 @@ class CustomFCPListItem {
     self.image = obj["image"] as? String
     self.playbackProgress = obj["playbackProgress"] as? CGFloat
     self.isPlaying = obj["isPlaying"] as? Bool
-    self.setPlayingIndicatorLocation(fromString: obj["playingIndicatorLocation"] as? String)
-    self.setAccessoryType(fromString: obj["accessoryType"] as? String)
   }
   
   var get: CustomFCPListItem {
@@ -55,9 +52,6 @@ class CustomFCPListItem {
     if isPlaying != nil {
       listItem.isPlaying = isPlaying!
     }
-    if playingIndicatorLocation != nil {
-      listItem.playingIndicatorLocation = playingIndicatorLocation!
-    }
     if accessoryType != nil {
       listItem.accessoryType = accessoryType!
     }
@@ -73,7 +67,7 @@ class CustomFCPListItem {
     self.completeHandler = nil
   }
   
-  public func update(text: String?, detailText: String?, image: String?, playbackProgress: CGFloat?, isPlaying: Bool?, playingIndicatorLocation: String?, accessoryType: String?) {
+  public func update(text: String?, detailText: String?, image: String?, playbackProgress: CGFloat?, isPlaying: Bool?, accessoryType: String?) {
     if text != nil {
       self._super?.setText(text!)
       self.text = text!
@@ -93,36 +87,6 @@ class CustomFCPListItem {
     if isPlaying != nil {
       self._super?.isPlaying = isPlaying!
       self.isPlaying = isPlaying
-    }
-    if playingIndicatorLocation != nil {
-      self.setPlayingIndicatorLocation(fromString: playingIndicatorLocation)
-      if self.playingIndicatorLocation != nil {
-        self._super?.playingIndicatorLocation = self.playingIndicatorLocation!
-      }
-    }
-    if accessoryType != nil {
-      self.setAccessoryType(fromString: accessoryType)
-      if self.accessoryType != nil {
-        self._super?.accessoryType = self.accessoryType!
-      }
-    }
-  }
-  
-  private func setPlayingIndicatorLocation(fromString: String?) {
-    if fromString == "leading" {
-      self.playingIndicatorLocation = CPListItemPlayingIndicatorLocation.leading
-    } else if fromString == "trailing" {
-      self.playingIndicatorLocation = CPListItemPlayingIndicatorLocation.trailing
-    }
-  }
-  
-  private func setAccessoryType(fromString: String?) {
-    if fromString == "cloud" {
-      self.accessoryType = CPListItemAccessoryType.cloud
-    } else if fromString == "disclosureIndicator" {
-      self.accessoryType = CPListItemAccessoryType.disclosureIndicator
-    } else {
-      self.accessoryType = CPListItemAccessoryType.none
     }
   }
 }
